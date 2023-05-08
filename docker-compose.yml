@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  database:
+    container_name: isell_db
+    image: postgres
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+  app:
+    build: .
+    container_name: isell_api
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - .:/usr/app
+    links:
+      - database
+    depends_on:
+      - database
