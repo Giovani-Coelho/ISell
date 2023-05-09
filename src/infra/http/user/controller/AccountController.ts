@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
-import { ISuccessResponse } from "../../interfaceResponse/ISucessResponse";
-import { IErrorResponse } from "../../interfaceResponse/IErrorResponse";
 import { AccountRepository } from "../../../repositories/account/AccountRepository";
 import { CreateAccount } from "../../../../app/account/create/CreateAccount";
+import { z } from "zod";
+import { AccountAlreadyExists } from "../../../../domain/account/accountAlreadyExists";
+import { ISuccessResponse } from "../../interfaceResponse/ISucessResponse";
+import { IErrorResponse } from "../../interfaceResponse/IErrorResponse";
 
 type IAccountResponse = { account: { name: string, email: string, password: string } }
 
@@ -11,12 +13,18 @@ const accountUseCase = new CreateAccount(accountRepository);
 
 class AccountController {
   public async create(req: Request, res: Response<ISuccessResponse<IAccountResponse> | IErrorResponse>):
-    Promise<Response<ISuccessResponse<IAccountResponse> | IErrorResponse>> {
-    const { name, email, password } = req.body
+    Promise<Response<ISuccessResponse<IAccountResponse> | IErrorResponse> | undefined> {
+    const createUserBodySchema = z.object({
+      name: z.string(),
+      email: z.string().email(),
+      password: z.string().min(4)
+    })
 
-    const account = await accountUseCase.execute({ name, email, password })
+    const { name, email, password } = createUserBodySchema.parse(req.body)
 
     try {
+      const account = await accountUseCase.execute({ name, email, password })
+
       return res.status(201).send({
         status: 201,
         body: {
@@ -26,19 +34,18 @@ class AccountController {
             password: account.password,
           }
         },
-        success: true,
-        error: false,
       })
-    } catch (error) {
-      return res.status(400).send({
-        status: 400,
-        success: false,
-        error: true,
-        message: "a"
-      })
+    } catch (err) {
+      if (err instanceof AccountAlreadyExists) {
+        return res.status(400).send({
+          status: 400,
+          err: err.message,
+          success: false,
+          error: true
+        })
+      }
     }
   }
 }
-
 
 export { AccountController }

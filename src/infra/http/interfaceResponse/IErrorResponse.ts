@@ -1,7 +1,7 @@
 
 export interface IErrorResponse {
-  status: number,
-  success: boolean,
-  error: boolean,
-  message: string
+  status: number
+  err: string
+  success: boolean
+  error: boolean
 }
