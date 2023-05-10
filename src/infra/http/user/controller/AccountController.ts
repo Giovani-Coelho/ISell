@@ -37,7 +37,7 @@ class AccountController {
       })
     } catch (error) {
       if (error instanceof ZodError)
-        return res.status(400).json({ status: 400, error: "Short Password!" })
+        return res.status(400).json({ status: 400, error: "Validation Error!" })
       if (error instanceof AccountAlreadyExists)
         return res.status(400).json({ status: 500, error: error.message })
     }
