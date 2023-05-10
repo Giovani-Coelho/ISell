@@ -6,14 +6,14 @@ import { ISuccessResponse } from "../../interfaceResponse/ISucessResponse";
 import { IErrorResponse } from "../../interfaceResponse/IErrorResponse";
 import { ZodError, z } from "zod";
 
-type IAccountResponse = { account: { name: string, email: string, password: string } }
+type ICreateAccountResponse = { account: { name: string, email: string, password: string } }
 
 const accountRepository = new AccountRepository();
 const accountUseCase = new CreateAccount(accountRepository);
 
-class AccountController {
-  public async create(req: Request, res: Response<ISuccessResponse<IAccountResponse> | IErrorResponse>):
-    Promise<Response<ISuccessResponse<IAccountResponse> | IErrorResponse> | undefined> {
+class CreateAccountController {
+  public async handle(req: Request, res: Response<ISuccessResponse<ICreateAccountResponse> | IErrorResponse>):
+    Promise<Response<ISuccessResponse<ICreateAccountResponse> | IErrorResponse> | undefined> {
     const createUserBodySchema = z.object({
       name: z.string(),
       email: z.string().email(),
@@ -44,4 +44,4 @@ class AccountController {
   }
 }
 
-export { AccountController }
+export { CreateAccountController }

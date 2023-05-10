@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { AccountController } from "../controller/AccountController";
+import { CreateAccountController } from "../controller/CreateAccountController";
 
 
 const controllerRoutes = Router();
-const accountController = new AccountController();
-controllerRoutes.post("/create", accountController.create)
+const createAccountController = new CreateAccountController();
+controllerRoutes.post("/create", createAccountController.handle)
 
 export { controllerRoutes }
