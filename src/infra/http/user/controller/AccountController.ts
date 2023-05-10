@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { AccountRepository } from "../../../repositories/account/AccountRepository";
 import { CreateAccount } from "../../../../app/account/create/CreateAccount";
-import { z } from "zod";
 import { AccountAlreadyExists } from "../../../../domain/account/accountAlreadyExists";
 import { ISuccessResponse } from "../../interfaceResponse/ISucessResponse";
 import { IErrorResponse } from "../../interfaceResponse/IErrorResponse";
+import { ZodError, z } from "zod";
 
 type IAccountResponse = { account: { name: string, email: string, password: string } }
 
@@ -20,9 +20,9 @@ class AccountController {
       password: z.string().min(4)
     })
 
-    const { name, email, password } = createUserBodySchema.parse(req.body)
-
     try {
+      const { name, email, password } = createUserBodySchema.parse(req.body)
+
       const account = await accountUseCase.execute({ name, email, password })
 
       return res.status(201).send({
@@ -35,15 +35,11 @@ class AccountController {
           }
         },
       })
-    } catch (err) {
-      if (err instanceof AccountAlreadyExists) {
-        return res.status(400).send({
-          status: 400,
-          err: err.message,
-          success: false,
-          error: true
-        })
-      }
+    } catch (error) {
+      if (error instanceof ZodError)
+        return res.status(400).json({ status: 400, error: "Short Password!" })
+      if (error instanceof AccountAlreadyExists)
+        return res.status(400).json({ status: 500, error: error.message })
     }
   }
 }
