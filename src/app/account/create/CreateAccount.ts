@@ -8,13 +8,11 @@ class CreateAccount {
 
   public async execute({ name, email, password }: IAccountDTO) {
 
-    console.log(name)
-
     const passwordHash = await hash(password, 6)
 
-    const userAlreadyExists = await this.accountRepository.findByEmail(email)
+    const accountAlreadyExists = await this.accountRepository.findByEmail(email)
 
-    if (userAlreadyExists) {
+    if (accountAlreadyExists) {
       throw new AccountAlreadyExists();
     }
 
