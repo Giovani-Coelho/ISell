@@ -1,7 +1,7 @@
 import { CreateAccount } from "@/app/account/create/CreateAccount"
 import { AccountAlreadyExists } from "@/domain/account/accountAlreadyExists"
 import { AccountRepositoryInMemory } from "@/infra/repositories/account/AccountRepositoryInMemory"
-import { error } from "console"
+import { compare, hash } from "bcryptjs"
 import { beforeEach, describe, expect, it } from "vitest"
 
 let accountRepository: AccountRepositoryInMemory
@@ -13,7 +13,7 @@ describe("Create Account UseCase", () => {
     createAccount = new CreateAccount(accountRepository);
   })
 
-  it("should be able create account", async () => {
+  it("Should be able create account", async () => {
     const account = await createAccount.execute({
       name: "Giovani Coelho",
       email: "giovanicoelho@hotmail.com",
@@ -21,6 +21,18 @@ describe("Create Account UseCase", () => {
     })
 
     expect(account.id).toEqual(expect.any(String))
+  })
+
+  it("Should be able to encrypt the password", async () => {
+    const { password } = await createAccount.execute({
+      name: "Giovani Coelho",
+      email: "giovanicoelho@hotmail.com",
+      password: "123456"
+    })
+    // compara a senha e verifica se a senha criada corresponde a uma senha criptografada
+    const passwordHash = await compare("123456", password)
+
+    expect(passwordHash).toBe(true)
   })
 
   it("Unable to create an account that already exists", async () => {
@@ -36,6 +48,6 @@ describe("Create Account UseCase", () => {
         email: "giovanicoelho@hotmail.com",
         password: "123456"
       })
-    }).rejects.toThrow()
+    }).rejects.toThrow(AccountAlreadyExists)
   })
 })
