@@ -1,7 +1,7 @@
-import { Account } from "@prisma/client";
-import { IAccountRepository } from "../../../domain/account/IAccountRepository";
-import { IAccountDTO } from "../../../domain/account/accountDTO";
-import { prisma } from "../../../lib/prismaClient";
+import { Account } from "@/domain/account/Account"
+import { IAccountRepository } from "@/domain/account/IAccountRepository"
+import { IAccountDTO } from "@/domain/account/accountDTO"
+import { prisma } from "@/lib/prismaClient"
 
 class AccountRepository implements IAccountRepository {
   public async create({ name, email, password }: IAccountDTO): Promise<Account> {

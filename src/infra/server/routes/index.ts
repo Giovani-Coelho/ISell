@@ -1,5 +1,5 @@
+import { controllerRoutes } from "@/infra/http/user/routes/account.routes";
 import { Router } from "express";
-import { controllerRoutes } from "../../http/user/routes/account.routes";
 
 const routes = Router()
 

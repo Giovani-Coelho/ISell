@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { AccountRepository } from "../../../repositories/account/AccountRepository";
-import { CreateAccount } from "../../../../app/account/create/CreateAccount";
-import { AccountAlreadyExists } from "../../../../domain/account/accountAlreadyExists";
+
+import { ZodError, z } from "zod";
 import { ISuccessResponse } from "../../interfaceResponse/ISucessResponse";
 import { IErrorResponse } from "../../interfaceResponse/IErrorResponse";
-import { ZodError, z } from "zod";
+import { CreateAccount } from "@/app/account/create/CreateAccount";
+import { AccountRepository } from "@/infra/repositories/account/AccountRepository";
+import { AccountAlreadyExists } from "@/domain/account/accountAlreadyExists";
 
 type ICreateAccountResponse = { account: { name: string, email: string, password: string } }
 

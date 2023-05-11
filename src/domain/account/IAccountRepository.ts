@@ -1,4 +1,4 @@
-import { Account } from "@prisma/client";
+import { Account } from "./Account";
 import { IAccountDTO } from "./accountDTO";
 
 

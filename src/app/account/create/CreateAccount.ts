@@ -1,12 +1,14 @@
-import { IAccountRepository } from "../../../domain/account/IAccountRepository";
-import { AccountAlreadyExists } from "../../../domain/account/accountAlreadyExists";
-import { IAccountDTO } from "../../../domain/account/accountDTO";
-import { hash } from 'bcryptjs'
+import { IAccountRepository } from "@/domain/account/IAccountRepository";
+import { AccountAlreadyExists } from "@/domain/account/accountAlreadyExists";
+import { IAccountDTO } from "@/domain/account/accountDTO";
+import { hash } from "bcryptjs";
 
 class CreateAccount {
   constructor(private accountRepository: IAccountRepository) { }
 
   public async execute({ name, email, password }: IAccountDTO) {
+
+    console.log(name)
 
     const passwordHash = await hash(password, 6)
 
