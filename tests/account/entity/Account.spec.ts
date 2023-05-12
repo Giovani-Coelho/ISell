@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it } from "vitest"
 
 let accountFactory: AccountFactory
 
-describe("Create Account UseCase", () => {
+describe("Create Account", () => {
   beforeEach(() => {
     accountFactory = new AccountFactory();
   })
