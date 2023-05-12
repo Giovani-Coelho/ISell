@@ -4,7 +4,6 @@ import { IAccountRepository } from "@/domain/account/IAccountRepository";
 import { IAccountDTO } from "@/domain/account/accountDTO";
 import { v4 as uuid } from "uuid";
 
-
 class AccountRepositoryInMemory implements IAccountRepository {
 
   private accounts: Account[] = []
