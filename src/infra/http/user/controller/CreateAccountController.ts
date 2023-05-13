@@ -40,7 +40,7 @@ class CreateAccountController {
       if (error instanceof ZodError)
         return res.status(400).json({ status: 400, error: "Incorrect credentials!" })
       if (error instanceof AccountAlreadyExists)
-        return res.status(400).json({ status: 500, error: error.message })
+        return res.status(400).json({ status: 400, error: error.message })
     }
   }
 }

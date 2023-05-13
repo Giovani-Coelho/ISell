@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { Product } from "./Product";
-import { IProductDTO } from "./productDTO";
+import { IProductDTO } from "./IProductDTO";
 
 class ProductFactory {
   public product: Product | undefined;
