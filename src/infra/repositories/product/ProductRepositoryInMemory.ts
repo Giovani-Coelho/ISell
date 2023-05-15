@@ -3,7 +3,6 @@ import { IProductRepository } from "@/domain/product/IProductRepository";
 import { Product } from "@/domain/product/Product";
 import { v4 as uuid } from "uuid";
 
-
 class ProductRepositoryInMemory implements IProductRepository {
   private products: Product[] = []
 
@@ -15,7 +14,9 @@ class ProductRepositoryInMemory implements IProductRepository {
     return product
   }
   public async list(account_id: string): Promise<Product[]> {
-    throw new Error("Method not implemented.");
+    const product = this.products.filter(product => product.account_id === account_id)
+
+    return product
   }
 
 }

@@ -1,3 +1,4 @@
+import { Account } from "../account/Account";
 import { IProductDTO } from "./IProductDTO";
 import { Product } from "./Product";
 

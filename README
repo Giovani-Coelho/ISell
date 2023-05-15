@@ -1,1 +1,20 @@
-TESTANDO
+## Requisitos Funcionais 
+
+[x] - Deve ser possivel criar uma conta.
+[] - Deve ser possivel o usuario se authenticar.
+[x] - Deve ser possivel o usuario publicar um produto.
+[x] - Deve ser possivel o usuario listar todos seus produtos.
+[] - Deve ser possivel falar quantos produtos voce tem em seu banco.
+[] - Deve ser possivel fazer um pedido de um produto.
+[] - Deve ser possivel listar todos os pedidos.
+[] - Deve ser possivel adicionar itens a um a um pedido.
+
+## Regras de Negocio
+
+[x] - Nao deve ser possivel se cadastrar com o mesmo e-mail.
+[x] - Nao deve ser possivel listar produtos de um usuario inexistente
+[x] - Nao deve ser possivel o usuario listar produtos caso nao tenha.
+
+## Rquisitos Funcionais
+
+[x] - A senha do usuario deve ser criptografada.

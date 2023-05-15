@@ -1,7 +1,6 @@
 import { CreateProduct } from "@/app/product/create/CreateProduct"
 import { ProductRepositoryInMemory } from "@/infra/repositories/product/ProductRepositoryInMemory"
 import { beforeEach, describe, expect, it } from "vitest"
-import { any } from "zod"
 
 let productRepository: ProductRepositoryInMemory
 let createProduct: CreateProduct
@@ -23,9 +22,4 @@ describe("Create Account UseCase", () => {
 
     expect(product.id).toEqual(expect.any(String))
   })
-
-  // it("Should be", async () => {
-
-  // })
-
 })

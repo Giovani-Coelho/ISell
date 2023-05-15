@@ -1,9 +1,6 @@
 import { IProductDTO } from "@/domain/product/IProductDTO";
 import { IProductRepository } from "@/domain/product/IProductRepository";
 
-
-
-
 class CreateProduct {
   constructor(private productsRepository: IProductRepository) { }
 

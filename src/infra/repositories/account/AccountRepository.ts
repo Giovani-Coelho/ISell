@@ -4,6 +4,7 @@ import { IAccountDTO } from "@/domain/account/accountDTO"
 import { prisma } from "@/lib/prismaClient"
 
 class AccountRepository implements IAccountRepository {
+
   public async create({ name, email, password }: IAccountDTO): Promise<Account> {
     const account = await prisma.account.create({
       data: {
@@ -24,6 +25,16 @@ class AccountRepository implements IAccountRepository {
     })
 
     return user
+  }
+
+  public async findById(id: string): Promise<Account | null> {
+    const account = await prisma.account.findFirst({
+      where: {
+        id
+      }
+    })
+
+    return account
   }
 }
 
