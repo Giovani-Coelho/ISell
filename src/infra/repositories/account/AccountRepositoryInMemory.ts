@@ -26,6 +26,9 @@ class AccountRepositoryInMemory implements IAccountRepository {
     return account
   }
 
+  public async findById(id: string): Promise<Account | null> {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export { AccountRepositoryInMemory }
