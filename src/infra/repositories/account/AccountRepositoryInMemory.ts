@@ -27,7 +27,13 @@ class AccountRepositoryInMemory implements IAccountRepository {
   }
 
   public async findById(id: string): Promise<Account | null> {
-    throw new Error("Method not implemented.");
+    const account = this.accounts.find(acc => acc.id === id)
+
+    if (!account) {
+      return null
+    }
+
+    return account
   }
 }
 
