@@ -29,6 +29,15 @@ class ProductRepository implements IProductRepository {
     return products
   }
 
+  public async listAll(page: string): Promise<Product[]> {
+    const pag = parseInt(page)
+
+    const products = await prisma.product.findMany();
+
+    const productsPagination = products.slice((pag - 1) * 20, pag * 20);
+
+    return productsPagination;
+  }
 }
 
 export { ProductRepository }

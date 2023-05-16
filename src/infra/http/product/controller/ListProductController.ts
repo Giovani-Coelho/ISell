@@ -8,18 +8,15 @@ import { ZodError, z } from 'zod';
 import { AccountRepository } from '@/infra/repositories/account/AccountRepository';
 import { AccountNotFound } from '@/domain/account/AccountNoFound';
 import { NoProducts } from '@/domain/product/NoProducts';
+import { IListProductResponse } from '../../interfaceResponse/IListProductResponse';
 
 const accountRepository = new AccountRepository();
 const productRepository = new ProductRepository();
 const listProductUseCase = new ListProduct(productRepository, accountRepository);
 
-type IListProductRequest = {
-  products: Product[]
-}
-
 class ListProductController {
-  public async handle(req: Request, res: Response<ISuccessResponse<IListProductRequest> | IErrorResponse>):
-    Promise<Response<ISuccessResponse<IListProductRequest> | IErrorResponse> | undefined> {
+  public async handle(req: Request, res: Response<ISuccessResponse<IListProductResponse> | IErrorResponse>):
+    Promise<Response<ISuccessResponse<IListProductResponse> | IErrorResponse> | undefined> {
     const accountSchema = z.object({
       account_id: z.string()
     })

@@ -23,6 +23,7 @@ Principais tecnologias usadas para desenvolver esta API.
 ✅ - Deve ser possivel criar uma conta.<br>
 ❌ - Deve ser possivel o usuario se authenticar.<br>
 ✅ - Deve ser possivel o usuario publicar um produto.<br>
+✅ - Deve ser possivel o usuario listar todos os seus produto.<br>
 ✅ - Deve ser possivel o usuario listar todos seus produtos.<br>
 ❌ - Deve ser possivel falar quantos produtos voce tem em seu banco.<br>
 ❌ - Deve ser possivel fazer um pedido de um produto.<br>
