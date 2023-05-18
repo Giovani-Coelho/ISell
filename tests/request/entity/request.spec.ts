@@ -9,7 +9,7 @@ describe("Create Product", () => {
     requestFactory = new RequestFactory();
   })
 
-  it("Should be able create a new product", () => {
+  it("Should be able create a new Request", () => {
     const req = requestFactory.productData({
       account_id: "123456",
       status: "in progress"
