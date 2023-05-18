@@ -31,4 +31,15 @@ model Product {
   account     Account  @relation(fields: [account_id], references: [id])
   account_id  String
   created_at  DateTime @default(now())
+  Stock       Stock[]
+}
+
+model Stock {
+  id         String   @id @default(uuid())
+  product    Product  @relation(fields: [product_id], references: [id])
+  product_id String
+  amount     Int
+  updated_at DateTime @default(now())
+
+  @@map("stock")
 }

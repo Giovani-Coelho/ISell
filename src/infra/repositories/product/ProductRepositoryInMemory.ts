@@ -7,7 +7,7 @@ class ProductRepositoryInMemory implements IProductRepository {
 
   private products: Product[] = []
 
-  public async create({ name, price, description, available, account_id }: IProductDTO): Promise<Product> {
+  public async create({ name, price, description, available, account_id }: IProductDTO, amount: number): Promise<Product> {
     const product = new Product(name, price, description, available, account_id, new Date(), uuid());
 
     this.products.push(product);

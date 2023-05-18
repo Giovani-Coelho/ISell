@@ -5,7 +5,7 @@ import { ProductRepository } from "@/infra/repositories/product/ProductRepositor
 import { Request, Response } from "express";
 import { IListProductResponse } from '../../interfaceResponse/IListProductResponse';
 import { IErrorResponse } from '../../interfaceResponse/IErrorResponse';
-import { number, z } from 'zod';
+import { z } from 'zod';
 
 const productRepository: IProductRepository = new ProductRepository();
 const listAllProduct: ListAllProducts = new ListAllProducts(productRepository);

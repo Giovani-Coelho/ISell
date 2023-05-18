@@ -21,7 +21,7 @@ describe("List all Product UseCase", () => {
       description: "2",
       available: true,
       account_id: "account_id"
-    })
+    }, 2)
 
     await createProduct.execute({
       name: "lapis",
@@ -29,7 +29,7 @@ describe("List all Product UseCase", () => {
       description: "2",
       available: true,
       account_id: "account_id"
-    })
+    }, 3)
 
     await createProduct.execute({
       name: "lapis",
@@ -37,9 +37,9 @@ describe("List all Product UseCase", () => {
       description: "2",
       available: true,
       account_id: "account_id"
-    })
+    }, 4)
 
-    const products = await listAllProducts.execute(1);
+    const products = await listAllProducts.execute("1");
 
     expect(products.length).toEqual(3);
   })

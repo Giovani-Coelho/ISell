@@ -18,7 +18,9 @@ describe("Create Product UseCase", () => {
       description: "",
       available: true,
       account_id: "5123151"
-    })
+    }, 5)
+
+    console.log(product)
 
     expect(product.id).toEqual(expect.any(String))
   })

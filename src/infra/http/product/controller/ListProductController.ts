@@ -2,7 +2,6 @@ import { ListProduct } from '@/app/product/list/ListProducts';
 import { ProductRepository } from '@/infra/repositories/product/ProductRepository';
 import { Request, Response } from "express";
 import { ISuccessResponse } from '../../interfaceResponse/ISucessResponse';
-import { Product } from '@/domain/product/Product';
 import { IErrorResponse } from '../../interfaceResponse/IErrorResponse';
 import { ZodError, z } from 'zod';
 import { AccountRepository } from '@/infra/repositories/account/AccountRepository';
@@ -20,7 +19,6 @@ class ListProductController {
     const accountSchema = z.object({
       account_id: z.string()
     })
-
 
     try {
       const { account_id } = accountSchema.parse(req.params);

@@ -24,15 +24,16 @@ class CreateProductController {
     const productSchema = z.object({
       name: z.string(),
       price: z.number(),
+      amount: z.number(),
       description: z.string().nullable(),
       available: z.boolean(),
       account_id: z.string()
     })
 
     try {
-      const { name, price, description, available, account_id, } = productSchema.parse(req.body);
+      const { name, price, amount, description, available, account_id, } = productSchema.parse(req.body);
 
-      const product = await productuseCase.execute({ name, price, description, available, account_id, });
+      const product = await productuseCase.execute({ name, price, description, available, account_id, }, amount);
 
       return res.status(201).send({
         status: 201,

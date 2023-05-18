@@ -37,7 +37,7 @@ describe("List Product UseCase", () => {
       description: "",
       available: true,
       account_id: account_id
-    })
+    }, 6)
 
     await createProduct.execute({
       name: "lapis",
@@ -45,7 +45,7 @@ describe("List Product UseCase", () => {
       description: "",
       available: true,
       account_id: account_id
-    })
+    }, 7)
 
     await createProduct.execute({
       name: "lapis",
@@ -53,7 +53,7 @@ describe("List Product UseCase", () => {
       description: "",
       available: true,
       account_id: account_id
-    })
+    }, 7)
 
     const listProducts = await listProduct.execute(account_id)
 
@@ -81,7 +81,7 @@ describe("List Product UseCase", () => {
       description: "",
       available: true,
       account_id: "5123151"
-    })
+    }, 8)
 
     expect(async () => {
       await listProduct.execute(account_id)
