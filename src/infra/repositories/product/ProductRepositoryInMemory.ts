@@ -14,6 +14,7 @@ class ProductRepositoryInMemory implements IProductRepository {
 
     return product;
   }
+
   public async list(account_id: string): Promise<Product[]> {
     const product = this.products.filter(product => product.account_id === account_id);
 

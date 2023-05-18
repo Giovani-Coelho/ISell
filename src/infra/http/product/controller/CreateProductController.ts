@@ -4,9 +4,12 @@ import { Request, Response } from "express";
 import { ZodError, z } from "zod";
 import { ISuccessResponse } from "../../interfaceResponse/ISucessResponse";
 import { IErrorResponse } from "../../interfaceResponse/IErrorResponse";
+import { AccountNotFound } from "@/domain/account/AccountNoFound";
+import { AccountRepository } from "@/infra/repositories/account/AccountRepository";
 
 const productRepository = new ProductRepository();
-const productuseCase = new CreateProduct(productRepository);
+const accountRepository = new AccountRepository()
+const productuseCase = new CreateProduct(productRepository, accountRepository);
 
 type ICreateProductResponse = {
   product: {
@@ -50,6 +53,8 @@ class CreateProductController {
         }
       })
     } catch (error) {
+      if (error instanceof AccountNotFound)
+        return res.status(400).json({ status: 400, error: error.message })
       if (error instanceof ZodError)
         return res.status(400).json({ status: 400, error: "Incorrect credentials!" })
     }

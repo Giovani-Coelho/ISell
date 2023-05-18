@@ -18,7 +18,7 @@ describe("List Product UseCase", () => {
     productRepository = new ProductRepositoryInMemory()
     accountRepository = new AccountRepositoryInMemory()
     createAccount = new CreateAccount(accountRepository)
-    createProduct = new CreateProduct(productRepository)
+    createProduct = new CreateProduct(productRepository, accountRepository)
     listProduct = new ListProduct(productRepository, accountRepository)
   })
 
@@ -37,7 +37,7 @@ describe("List Product UseCase", () => {
       amount: 5,
       description: "",
       available: true,
-      account_id: account_id
+      account_id
     })
 
     await createProduct.execute({
@@ -46,7 +46,7 @@ describe("List Product UseCase", () => {
       amount: 5,
       description: "",
       available: true,
-      account_id: account_id
+      account_id
     })
 
     await createProduct.execute({
@@ -55,7 +55,7 @@ describe("List Product UseCase", () => {
       amount: 5,
       description: "",
       available: true,
-      account_id: account_id
+      account_id
     })
 
     const listProducts = await listProduct.execute(account_id)
@@ -76,19 +76,8 @@ describe("List Product UseCase", () => {
       password: "123456"
     })
 
-    const account_id = account.id as string;
-
-    await createProduct.execute({
-      name: "lapis",
-      price: 1.90,
-      amount: 5,
-      description: "",
-      available: true,
-      account_id: "5123151"
-    })
-
     expect(async () => {
-      await listProduct.execute(account_id)
+      await listProduct.execute(account.id as string)
     }).rejects.toThrow(NoProducts);
   })
 })
