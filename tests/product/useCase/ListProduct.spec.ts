@@ -34,26 +34,29 @@ describe("List Product UseCase", () => {
     await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 5,
       description: "",
       available: true,
       account_id: account_id
-    }, 6)
+    })
 
     await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 5,
       description: "",
       available: true,
       account_id: account_id
-    }, 7)
+    })
 
     await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 5,
       description: "",
       available: true,
       account_id: account_id
-    }, 7)
+    })
 
     const listProducts = await listProduct.execute(account_id)
 
@@ -78,10 +81,11 @@ describe("List Product UseCase", () => {
     await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 5,
       description: "",
       available: true,
       account_id: "5123151"
-    }, 8)
+    })
 
     expect(async () => {
       await listProduct.execute(account_id)

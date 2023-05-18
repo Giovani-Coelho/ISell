@@ -5,21 +5,15 @@ import { prisma } from "@/lib/prismaClient";
 
 class ProductRepository implements IProductRepository {
 
-  public async create({ name, price, description, available, account_id }: IProductDTO, amount: number): Promise<Product> {
+  public async create({ name, price, amount, description, available, account_id }: IProductDTO): Promise<Product> {
     const product = await prisma.product.create({
       data: {
         name,
         price,
+        amount,
         description,
         available,
         account_id
-      }
-    })
-
-    await prisma.stock.create({
-      data: {
-        product_id: product.id,
-        amount
       }
     })
 

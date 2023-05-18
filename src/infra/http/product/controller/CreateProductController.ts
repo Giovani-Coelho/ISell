@@ -12,6 +12,7 @@ type ICreateProductResponse = {
   product: {
     name: string;
     price: number;
+    amount: number;
     description: string | null;
     available: boolean;
     account_id: string;
@@ -33,7 +34,7 @@ class CreateProductController {
     try {
       const { name, price, amount, description, available, account_id, } = productSchema.parse(req.body);
 
-      const product = await productuseCase.execute({ name, price, description, available, account_id, }, amount);
+      const product = await productuseCase.execute({ name, price, amount, description, available, account_id, });
 
       return res.status(201).send({
         status: 201,
@@ -41,6 +42,7 @@ class CreateProductController {
           product: {
             name: product.name,
             price: product.price,
+            amount: product.amount,
             description: product.description,
             available: product.available,
             account_id: product.account_id,

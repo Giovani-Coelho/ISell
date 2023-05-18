@@ -4,8 +4,8 @@ import { IProductRepository } from "@/domain/product/IProductRepository";
 class CreateProduct {
   constructor(private productsRepository: IProductRepository) { }
 
-  public async execute({ name, price, description, available, account_id }: IProductDTO, amount: number) {
-    const product = await this.productsRepository.create({ name, price, description, available, account_id }, amount)
+  public async execute({ name, price, amount, description, available, account_id }: IProductDTO) {
+    const product = await this.productsRepository.create({ name, price, amount, description, available, account_id })
 
     return product
   }

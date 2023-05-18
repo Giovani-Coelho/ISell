@@ -15,12 +15,11 @@ describe("Create Product UseCase", () => {
     const product = await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 2,
       description: "",
       available: true,
       account_id: "5123151"
-    }, 5)
-
-    console.log(product)
+    })
 
     expect(product.id).toEqual(expect.any(String))
   })

@@ -18,26 +18,29 @@ describe("List all Product UseCase", () => {
     await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 5,
       description: "2",
       available: true,
       account_id: "account_id"
-    }, 2)
+    })
 
     await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 5,
       description: "2",
       available: true,
       account_id: "account_id"
-    }, 3)
+    })
 
     await createProduct.execute({
       name: "lapis",
       price: 1.90,
+      amount: 5,
       description: "2",
       available: true,
       account_id: "account_id"
-    }, 4)
+    })
 
     const products = await listAllProducts.execute("1");
 

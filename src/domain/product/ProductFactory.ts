@@ -5,8 +5,8 @@ import { IProductDTO } from "./IProductDTO";
 class ProductFactory {
   public product: Product | undefined;
 
-  public productData({ name, price, description, available, account_id }: IProductDTO) {
-    this.product = new Product(name, price, description, available, account_id, new Date(), uuid())
+  public productData({ name, price, amount, description, available, account_id }: IProductDTO) {
+    this.product = new Product(name, price, amount, description, available, account_id, new Date(), uuid())
     return this;
   }
 

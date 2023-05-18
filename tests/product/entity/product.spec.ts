@@ -12,6 +12,7 @@ describe("Create Product", () => {
     const product = productFactory.productData({
       name: "celular",
       price: 12222,
+      amount: 3,
       description: "",
       available: true,
       account_id: "5f9888bb-79cd-4d90-892d-681ce1a4b9cd"

@@ -1,8 +1,0 @@
-
-
-
-class StockRepository {
-
-}
-
-export { StockRepository }
