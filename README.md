@@ -25,7 +25,7 @@ Principais tecnologias usadas para desenvolver esta API.
 ✅ - Deve ser possivel o usuario publicar um produto.<br>
 ✅ - Deve ser possivel o usuario listar todos os seus produto.<br>
 ✅ - Deve ser possivel o usuario listar todos seus produtos.<br>
-❌ - Deve ser possivel falar quantos produtos voce tem em seu banco.<br>
+✅ - Deve ser possivel o usuario criar um pedido.<br>
 ❌ - Deve ser possivel fazer um pedido de um produto.<br>
 ❌ - Deve ser possivel listar todos os pedidos.<br>
 ❌ - Deve ser possivel adicionar itens a um a um pedido.<br>
@@ -35,6 +35,8 @@ Principais tecnologias usadas para desenvolver esta API.
 ✅ - Nao deve ser possivel se cadastrar com o mesmo e-mail.<br>
 ✅ - Nao deve ser possivel listar produtos de um usuario inexistente.<br>
 ✅ - Nao deve ser possivel o usuario listar produtos caso nao tenha.<br>
+✅ - Nao deve ser possivel criar um pedido usando um usuario inexistente.<br>
+
 
 ## Rquisitos nao Funcionais 🔧
 

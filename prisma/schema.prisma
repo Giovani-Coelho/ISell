@@ -18,6 +18,7 @@ model Account {
   password   String
   created_at DateTime  @default(now())
   Product    Product[]
+  Request    Request[]
 
   @@map("accounts")
 }
@@ -34,4 +35,14 @@ model Product {
   created_at  DateTime @default(now())
 
   @@map("products")
+}
+
+model Request {
+  id         String   @id @default(uuid())
+  account    Account  @relation(fields: [account_id], references: [id])
+  account_id String
+  status     String
+  created_at DateTime @default(now())
+
+  @@map("requests")
 }

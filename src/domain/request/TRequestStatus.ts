@@ -1,0 +1,1 @@
+export type TRequestStatus = "pending" | "in progress" | "sent"
