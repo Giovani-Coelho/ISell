@@ -36,7 +36,7 @@ Principais tecnologias usadas para desenvolver esta API.
 ✅ - Nao deve ser possivel listar produtos de um usuario inexistente.<br>
 ✅ - Nao deve ser possivel o usuario listar produtos caso nao tenha.<br>
 ✅ - Nao deve ser possivel criar um pedido usando um usuario inexistente.<br>
-
+✅ - Nao deve ser possivel criar um pedido se for passado um valor de status incorreto.<br>
 
 ## Rquisitos nao Funcionais 🔧
 
