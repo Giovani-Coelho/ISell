@@ -6,6 +6,7 @@ import { ISuccessResponse } from "../../interfaceResponse/ISucessResponse";
 import { IErrorResponse } from "../../interfaceResponse/IErrorResponse";
 import { AccountNotFound } from "@/domain/account/AccountNoFound";
 import { AccountRepository } from "@/infra/repositories/account/AccountRepository";
+import { InvalidStatus } from "@/domain/request/InvalidStatus";
 
 const productRepository = new ProductRepository();
 const accountRepository = new AccountRepository()
@@ -55,8 +56,8 @@ class CreateProductController {
     } catch (error) {
       if (error instanceof AccountNotFound)
         return res.status(400).json({ status: 400, error: error.message })
-      if (error instanceof ZodError)
-        return res.status(400).json({ status: 400, error: "Incorrect credentials!" })
+      if (error instanceof InvalidStatus)
+        return res.status(400).json({ status: 400, error: error.message })
     }
   }
 }

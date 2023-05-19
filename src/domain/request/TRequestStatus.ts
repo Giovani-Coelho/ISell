@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { InvalidStatus } from "./InvalidStatus";
 
 export type TRequestStatus = "pending" | "in progress" | "sent"
 
@@ -7,5 +8,5 @@ export const requestStatusValidator = z.custom<TRequestStatus>((value) => {
     return value;
   }
 
-  throw new Error("Invalid request status");
+  throw new InvalidStatus();
 });
