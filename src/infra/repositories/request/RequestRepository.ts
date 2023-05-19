@@ -14,6 +14,16 @@ class RequestRepository implements IRequestRepository {
 
     return request
   }
+
+  public async list(account_id: string): Promise<Request[]> {
+    const requests = await prisma.request.findMany({
+      where: {
+        account_id
+      }
+    })
+
+    return requests
+  }
 }
 
 export { RequestRepository }

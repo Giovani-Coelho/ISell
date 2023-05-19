@@ -2,6 +2,7 @@ import { IProductRepository } from "@/domain/product/IProductRepository"
 import { IAccountRepository } from '@/domain/account/IAccountRepository';
 import { AccountNotFound } from '@/domain/account/AccountNoFound';
 import { NoProducts } from '@/domain/product/NoProducts';
+import { Product } from "@/domain/product/Product";
 
 class ListProduct {
   constructor(
@@ -9,7 +10,7 @@ class ListProduct {
     private accountRepository: IAccountRepository
   ) { }
 
-  public async execute(account_id: string) {
+  public async execute(account_id: string): Promise<Product[]> {
 
     const account = await this.accountRepository.findById(account_id);
 
