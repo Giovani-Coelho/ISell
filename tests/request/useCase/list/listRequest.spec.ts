@@ -2,6 +2,7 @@ import { CreateAccount } from "@/app/account/create/CreateAccount"
 import { CreateProduct } from "@/app/product/create/CreateProduct"
 import { CreateRequest } from "@/app/request/create/CreateRequest"
 import { ListRequest } from "@/app/request/list/ListRequest"
+import { AccountNotFound } from "@/domain/account/AccountNoFound"
 import { AccountRepositoryInMemory } from "@/infra/repositories/account/AccountRepositoryInMemory"
 import { RequestRepositoryInMemory } from "@/infra/repositories/request/RequestRepositoryInMemory"
 import { beforeEach, describe, expect, it } from "vitest"
@@ -48,5 +49,14 @@ describe("Create Product UseCase", () => {
     const requests = await listRequest.execute(account_id);
 
     expect(requests.length).toBe(3)
+  })
+
+  it("Should return an invalid id error when listing the request", async () => {
+    await expect(
+      createRequest.execute({
+        account_id: "1321",
+        status: "in progress"
+      })
+    ).rejects.toThrow(AccountNotFound)
   })
 })
