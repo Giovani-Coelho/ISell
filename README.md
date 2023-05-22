@@ -26,13 +26,14 @@ Principais tecnologias usadas para desenvolver esta API.
 ✅ - Deve ser possivel o usuario listar todos os seus produto.<br>
 ✅ - Deve ser possivel o usuario listar todos seus produtos.<br>
 ✅ - Deve ser possivel o usuario criar um pedido.<br>
+✅ - Deve ser possivel listar todos os pedidos.<br>
+✅ - Deve ser possivel adicionar itens a um a um pedido.<br>
 ❌ - Deve ser possivel fazer um pedido de um produto.<br>
-❌ - Deve ser possivel listar todos os pedidos.<br>
-❌ - Deve ser possivel adicionar itens a um a um pedido.<br>
 
 ## Regras de Negocio 👔
 
 ✅ - Nao deve ser possivel se cadastrar com o mesmo e-mail.<br>
+✅ - Nao deve ser possivel criar um produto se o usuario nao existir.<br>
 ✅ - Nao deve ser possivel listar produtos de um usuario inexistente.<br>
 ✅ - Nao deve ser possivel o usuario listar produtos caso nao tenha.<br>
 ✅ - Nao deve ser possivel criar um pedido usando um usuario inexistente.<br>
@@ -41,5 +42,6 @@ Principais tecnologias usadas para desenvolver esta API.
 ## Rquisitos nao Funcionais 🔧
 
 ✅ - A senha do usuario deve ser criptografada.<br>
+❌- Todas listas de dados precisam de paginacao de 20 itens.
 
 🔰
