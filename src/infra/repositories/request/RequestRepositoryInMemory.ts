@@ -16,7 +16,9 @@ class RequestRepositoryInMemory implements IRequestRepository {
   }
 
   public async list(account_id: string): Promise<Request[]> {
-    throw new Error("Method not implemented.");
+    const products = this.requests.filter(acc => acc.account_id === account_id)
+
+    return products
   }
 }
 

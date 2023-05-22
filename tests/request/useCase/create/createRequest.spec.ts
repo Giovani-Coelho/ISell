@@ -4,7 +4,6 @@ import { TRequestStatus } from "@/domain/request/TRequestStatus"
 import { AccountRepositoryInMemory } from "@/infra/repositories/account/AccountRepositoryInMemory"
 import { RequestRepositoryInMemory } from "@/infra/repositories/request/RequestRepositoryInMemory"
 import { beforeEach, describe, expect, it } from "vitest"
-import { InvalidStatus } from "@/domain/request/InvalidStatus"
 
 let requestRepository: RequestRepositoryInMemory
 let accountRepository: AccountRepositoryInMemory
