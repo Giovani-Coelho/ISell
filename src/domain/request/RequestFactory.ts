@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 class RequestFactory {
   public request: Request | undefined;
 
-  public productData({ account_id, status }: IRequestDTO) {
+  public productData({ account_id, status }: IRequestDTO): RequestFactory {
     this.request = new Request(account_id, status, new Date(), uuid())
     return this;
   }

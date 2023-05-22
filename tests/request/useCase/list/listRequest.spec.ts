@@ -1,5 +1,4 @@
 import { CreateAccount } from "@/app/account/create/CreateAccount"
-import { CreateProduct } from "@/app/product/create/CreateProduct"
 import { CreateRequest } from "@/app/request/create/CreateRequest"
 import { ListRequest } from "@/app/request/list/ListRequest"
 import { AccountNotFound } from "@/domain/account/AccountNoFound"

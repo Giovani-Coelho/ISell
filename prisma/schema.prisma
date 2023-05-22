@@ -24,25 +24,39 @@ model Account {
 }
 
 model Product {
-  id          String   @id @default(uuid())
-  name        String
-  price       Float    @default(0.00)
-  amount      Int      @default(1)
-  description String?
-  available   Boolean
-  account     Account  @relation(fields: [account_id], references: [id])
-  account_id  String
-  created_at  DateTime @default(now())
+  id             String           @id @default(uuid())
+  name           String
+  price          Float            @default(0.00)
+  amount         Int              @default(1)
+  description    String?
+  available      Boolean
+  account        Account          @relation(fields: [account_id], references: [id])
+  account_id     String
+  created_at     DateTime         @default(now())
+  OrderedProduct OrderedProduct[]
 
   @@map("products")
 }
 
 model Request {
-  id         String   @id @default(uuid())
-  account    Account  @relation(fields: [account_id], references: [id])
-  account_id String
-  status     String
-  created_at DateTime @default(now())
+  id             String           @id @default(uuid())
+  account        Account          @relation(fields: [account_id], references: [id])
+  account_id     String
+  status         String
+  created_at     DateTime         @default(now())
+  OrderedProduct OrderedProduct[]
 
   @@map("requests")
+}
+
+model OrderedProduct {
+  id         String   @id @default(uuid())
+  request    Request  @relation(fields: [request_id], references: [id])
+  request_id String
+  product    Product  @relation(fields: [product_id], references: [id])
+  product_id String
+  amount     Int      @default(1)
+  created_at DateTime @default(now())
+
+  @@map("orderedProduct")
 }
