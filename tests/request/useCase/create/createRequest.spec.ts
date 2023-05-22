@@ -34,4 +34,18 @@ describe("Create Product UseCase", () => {
     expect(request.id).toEqual(expect.any(String));
     expect(request.status).toEqual("in progress");
   })
+
+  it("Should be able to create a Request", async () => {
+    const account = await createAccount.execute({
+      name: "Giovani Coelho",
+      email: "giovanicoelho@hotmail.com",
+      password: "123456"
+    })
+
+    expect(
+      createRequest.execute({
+        account_id: account.id as string,
+        status: "in progresss" as TRequestStatus
+      })).rejects
+  })
 })
