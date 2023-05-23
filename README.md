@@ -28,7 +28,7 @@ Principais tecnologias usadas para desenvolver esta API.
 ✅ - Deve ser possivel o usuario criar um pedido.<br>
 ✅ - Deve ser possivel listar todos os pedidos.<br>
 ✅ - Deve ser possivel adicionar itens a um pedido.<br>
-❌ - Deve ser possivel fazer um pedido de um produto.<br>
+✅ - Deve ser possivel fazer um pedido de um produto.<br>
 
 ## Regras de Negocio 👔
 
@@ -42,6 +42,6 @@ Principais tecnologias usadas para desenvolver esta API.
 ## Rquisitos nao Funcionais 🔧
 
 ✅ - A senha do usuario deve ser criptografada.<br>
-❌- Todas listas de dados precisam de paginacao de 20 itens.
+✅ - Todas listas de dados precisam de paginacao de 20 itens.
 
 🔰
