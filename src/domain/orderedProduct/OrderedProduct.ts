@@ -2,14 +2,14 @@
 class OrderedProduct {
 
   public id: string = "";
-  public idRequest: string;
-  public idProduct: string;
+  public request_id: string;
+  public product_id: string;
   public amount: number;
   public created_at?: Date;
 
-  constructor(idRequest: string, idProduct: string, amount: number, created_at?: Date, id?: string) {
-    this.idRequest = idRequest;
-    this.idProduct = idProduct;
+  constructor(request_id: string, product_id: string, amount: number, created_at?: Date, id?: string) {
+    this.request_id = request_id;
+    this.product_id = product_id;
     this.amount = amount;
     this.created_at = created_at;
 

@@ -1,5 +1,6 @@
 import { IOrderedProductDTO } from "@/domain/orderedProduct/IOrderedProductDTO";
 import { IOrderedProductRepositoy } from "@/domain/orderedProduct/IOrderedProductRepository";
+import { OrderedProduct } from "@/domain/orderedProduct/OrderedProduct";
 import { IProductRepository } from "@/domain/product/IProductRepository";
 import { ProductNotFound } from "@/domain/product/ProductNotFound";
 import { IRequestRepository } from "@/domain/request/IRequestRepository";
@@ -12,7 +13,7 @@ class CreateOrderedProduct {
     private orderedProductRepository: IOrderedProductRepositoy
   ) { }
 
-  public async execute({ idRequest, idProduct, amount }: IOrderedProductDTO) {
+  public async execute({ idRequest, idProduct, amount }: IOrderedProductDTO): Promise<OrderedProduct> {
     const request = await this.requestRepository.findById(idRequest);
 
     if (!request) {
