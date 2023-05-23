@@ -39,6 +39,16 @@ class ProductRepository implements IProductRepository {
 
     return productsPagination;
   }
+
+  public async findById(product_id: string): Promise<Product | null> {
+    const product = await prisma.product.findFirst({
+      where: {
+        id: product_id
+      }
+    })
+
+    return product
+  }
 }
 
 export { ProductRepository }

@@ -27,7 +27,7 @@ Principais tecnologias usadas para desenvolver esta API.
 ✅ - Deve ser possivel o usuario listar todos seus produtos.<br>
 ✅ - Deve ser possivel o usuario criar um pedido.<br>
 ✅ - Deve ser possivel listar todos os pedidos.<br>
-✅ - Deve ser possivel adicionar itens a um a um pedido.<br>
+✅ - Deve ser possivel adicionar itens a um pedido.<br>
 ❌ - Deve ser possivel fazer um pedido de um produto.<br>
 
 ## Regras de Negocio 👔

@@ -28,6 +28,14 @@ class ProductRepositoryInMemory implements IProductRepository {
 
     return product;
   }
+
+  public async findById(product_id: string): Promise<Product | null> {
+    const product = this.products.find(product => product.id === product_id);
+
+    if (!product) return null
+
+    return product
+  }
 }
 
 export { ProductRepositoryInMemory }

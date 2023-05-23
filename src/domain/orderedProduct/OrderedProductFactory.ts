@@ -1,17 +1,18 @@
+import { v4 as uuid } from "uuid";
 import { IOrderedProductDTO } from "./IOrderedProductDTO";
 import { OrderedProduct } from "./OrderedProduct";
 
 class OrderedProductFactory {
-  private account: OrderedProduct | undefined;
+  private orderedProduct: OrderedProduct | undefined;
 
   public orderedProductData({ idRequest, idProduct, amount }: IOrderedProductDTO): OrderedProductFactory {
-    this.account = new OrderedProduct(idRequest, idProduct, amount)
+    this.orderedProduct = new OrderedProduct(idRequest, idProduct, amount, new Date(), uuid())
 
     return this
   }
 
   public create(): OrderedProduct | undefined {
-    return this.account
+    return this.orderedProduct
   }
 }
 

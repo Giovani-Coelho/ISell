@@ -1,7 +1,7 @@
 
 class OrderedProduct {
 
-  public id?: string;
+  public id: string = "";
   public idRequest: string;
   public idProduct: string;
   public amount: number;

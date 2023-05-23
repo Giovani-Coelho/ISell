@@ -1,7 +1,7 @@
 import { TRequestStatus } from "./TRequestStatus";
 
 class Request {
-  public id: string | undefined;
+  public id: string = "";
   public account_id: string;
   public status: string
   public created_at: Date
