@@ -18,7 +18,7 @@ let createProduct: CreateProduct
 let createAccount: CreateAccount
 let createRequest: CreateRequest
 
-describe("Create Product UseCase", () => {
+describe("create an order for a product", () => {
   beforeEach(() => {
     requestRepository = new RequestRepositoryInMemory();
     accountRepository = new AccountRepositoryInMemory();

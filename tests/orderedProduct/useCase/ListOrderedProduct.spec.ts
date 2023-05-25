@@ -20,7 +20,7 @@ let createProduct: CreateProduct
 let createAccount: CreateAccount
 let createRequest: CreateRequest
 
-describe("Create Product UseCase", () => {
+describe("List products from an order", () => {
   beforeEach(() => {
     requestRepository = new RequestRepositoryInMemory();
     accountRepository = new AccountRepositoryInMemory();
@@ -36,7 +36,7 @@ describe("Create Product UseCase", () => {
     createProduct = new CreateProduct(productRepository, accountRepository)
   })
 
-  it("Should be able to order a product", async () => {
+  it("Should be able to list the products of an order", async () => {
     const account = await createAccount.execute({
       name: "Giovani Coelho",
       email: "giovanicoelho@hotmail.com",
