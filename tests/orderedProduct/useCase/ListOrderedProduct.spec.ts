@@ -3,6 +3,7 @@ import { CreateOrderedProduct } from "@/app/orderedProduct/create/CreateOrderedP
 import { ListOrderedProduct } from "@/app/orderedProduct/list/ListOrderedProduct"
 import { CreateProduct } from "@/app/product/create/CreateProduct"
 import { CreateRequest } from "@/app/request/create/CreateRequest"
+import { RequestNotFound } from "@/domain/request/RequestNotFound"
 import { AccountRepositoryInMemory } from "@/infra/repositories/account/AccountRepositoryInMemory"
 import { OrderedProductInMemoryRepository } from "@/infra/repositories/orderedProduct/OrderedProductInMemoryRepository"
 import { ProductRepositoryInMemory } from "@/infra/repositories/product/ProductRepositoryInMemory"
@@ -78,5 +79,37 @@ describe("List products from an order", () => {
     const list = await listOrderedProduct.execute(request.id);
 
     expect(list.length).toBe(3)
+  })
+
+  it("Should not be possible to list the products of an order", async () => {
+    const account = await createAccount.execute({
+      name: "Giovani Coelho",
+      email: "giovanicoelho@hotmail.com",
+      password: "123456"
+    })
+
+    const request = await createRequest.execute({
+      account_id: account.id as string,
+      status: "in progress"
+    })
+
+    const product = await createProduct.execute({
+      name: "lapis",
+      price: 1.90,
+      amount: 2,
+      description: "",
+      available: true,
+      account_id: account.id as string
+    })
+
+    await createOrderedProduct.execute({
+      idRequest: request.id,
+      idProduct: product.id,
+      amount: 2
+    })
+
+    expect(async () =>
+      await listOrderedProduct.execute("111")
+    ).rejects.toThrow(RequestNotFound);
   })
 })
