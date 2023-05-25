@@ -1,5 +1,6 @@
 import { CreateAccount } from "@/app/account/create/CreateAccount"
 import { CreateOrderedProduct } from "@/app/orderedProduct/create/CreateOrderedProduct"
+import { ListOrderedProduct } from "@/app/orderedProduct/list/ListOrderedProduct"
 import { CreateProduct } from "@/app/product/create/CreateProduct"
 import { CreateRequest } from "@/app/request/create/CreateRequest"
 import { AccountRepositoryInMemory } from "@/infra/repositories/account/AccountRepositoryInMemory"
@@ -14,6 +15,7 @@ let productRepository: ProductRepositoryInMemory
 let orderedProductRepository: OrderedProductInMemoryRepository
 
 let createOrderedProduct: CreateOrderedProduct
+let listOrderedProduct: ListOrderedProduct
 let createProduct: CreateProduct
 let createAccount: CreateAccount
 let createRequest: CreateRequest
@@ -28,6 +30,7 @@ describe("Create Product UseCase", () => {
     createOrderedProduct = new CreateOrderedProduct(
       requestRepository, productRepository, orderedProductRepository
     );
+    listOrderedProduct = new ListOrderedProduct(orderedProductRepository, requestRepository);
     createAccount = new CreateAccount(accountRepository);
     createRequest = new CreateRequest(requestRepository, accountRepository);
     createProduct = new CreateProduct(productRepository, accountRepository)
@@ -54,15 +57,26 @@ describe("Create Product UseCase", () => {
       account_id: account.id as string
     })
 
-    const ordernedProduct = await createOrderedProduct.execute({
+    await createOrderedProduct.execute({
       idRequest: request.id,
       idProduct: product.id,
       amount: 2
     })
 
-    expect(ordernedProduct?.id).toEqual(expect.any(String))
-    expect(ordernedProduct.request_id).toEqual(request.id)
-    expect(ordernedProduct.product_id).toEqual(product.id)
-    expect(ordernedProduct.amount).toEqual(2)
+    await createOrderedProduct.execute({
+      idRequest: request.id,
+      idProduct: product.id,
+      amount: 2
+    })
+
+    await createOrderedProduct.execute({
+      idRequest: request.id,
+      idProduct: product.id,
+      amount: 2
+    })
+
+    const list = await listOrderedProduct.execute(request.id);
+
+    expect(list.length).toBe(3)
   })
 })

@@ -12,6 +12,12 @@ class OrderedProductInMemoryRepository implements IOrderedProductRepositoy {
 
     return orderedProduct
   }
+
+  public async list(request_id: string): Promise<OrderedProduct[]> {
+    const orderedProduct = this.orderedProducts.filter(product => product.request_id === request_id);
+
+    return orderedProduct
+  }
 }
 
 export { OrderedProductInMemoryRepository }

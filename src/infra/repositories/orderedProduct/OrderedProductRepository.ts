@@ -16,6 +16,16 @@ class OrderedProductRepository implements IOrderedProductRepositoy {
 
     return orderedProduct;
   }
+
+  public async list(request_id: string): Promise<OrderedProduct[]> {
+    const product = await prisma.orderedProduct.findMany({
+      where: {
+        request_id
+      }
+    })
+
+    return product
+  }
 }
 
 export { OrderedProductRepository }

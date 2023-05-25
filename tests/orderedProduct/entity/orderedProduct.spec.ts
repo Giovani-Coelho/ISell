@@ -15,8 +15,8 @@ describe("Create a Ordered Product", () => {
       amount: 2
     }).create();
 
-    expect(orderedProduct?.idRequest).toBe("1234");
-    expect(orderedProduct?.idProduct).toBe("4321");
+    expect(orderedProduct?.request_id).toBe("1234");
+    expect(orderedProduct?.product_id).toBe("4321");
     expect(orderedProduct?.amount).toBe(2);
   })
 })
