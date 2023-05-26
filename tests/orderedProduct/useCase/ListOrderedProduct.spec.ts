@@ -81,7 +81,7 @@ describe("List products from an order", () => {
     expect(list.length).toBe(3)
   })
 
-  it("Should not be possible to list the products of an order", async () => {
+  it("Should not be able to list the products of an order", async () => {
     const account = await createAccount.execute({
       name: "Giovani Coelho",
       email: "giovanicoelho@hotmail.com",

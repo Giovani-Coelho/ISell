@@ -18,6 +18,10 @@ Principais tecnologias usadas para desenvolver esta API.
 - [Docker](https://www.docker.com/)
 - [Zod](https://github.com/colinhacks/zod)
 
+## Modelagem de Dados
+
+![image](modelagem.png)
+
 ## Requisitos Funcionais ⚙️
 
 ✅ - Deve ser possivel criar uma conta.<br>
@@ -46,5 +50,7 @@ Principais tecnologias usadas para desenvolver esta API.
 
 ✅ - A senha do usuario deve ser criptografada.<br>
 ✅ - Todas listas de dados precisam de paginacao de 20 itens.
+
+
 
 🔰
