@@ -3,7 +3,6 @@ import { CreateProductController } from "../controller/CreateProductController";
 import { ListProductController } from "../controller/ListProductController";
 import { ListAllProductController } from "../controller/ListAllProductController";
 
-
 const createProductController = new CreateProductController();
 const listProductController = new ListProductController();
 const listAllProductController = new ListAllProductController();

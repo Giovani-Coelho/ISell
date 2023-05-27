@@ -1,21 +1,26 @@
 import { key } from "@/app/authenticate/AuthenticateAccount";
-import { NextFunction, Response } from "express";
+import { TokenMissing } from "@/domain/authenticate/TokenMissing";
+import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
+export async function ensureAuthenticate(req: Request, res: Response, next: NextFunction) {
+  try {
+    const tokenHeader = req.headers.authorization;
 
-// export function ensureAuthenticate(req: Request, res: Response, next: NextFunction) {
-//   const tokenHeader = req.headers.authorization;
+    if (!tokenHeader) {
+      throw new TokenMissing()
+    }
 
-//   const [, token] = tokenHeader.split(" ");
+    const [, token] = tokenHeader.split(" ");
 
-//   try {
-//     const { user: id } = verify(token, key)
+    verify(token, key)
+    next();
 
-//     req.dadosMiddleware = 'Dados do middleware';
+  } catch (error) {
+    if (error instanceof TokenMissing)
+      return res.status(400).json({ error: error.message })
 
-//     next();
-//   } catch (error) {
-//     res.status(400).json({ error: error })
-//   }
-// }
+    return res.status(400).json({ error: error })
+  }
+}
 

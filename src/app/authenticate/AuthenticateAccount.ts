@@ -2,9 +2,6 @@ import jwt from 'jsonwebtoken';
 import { AccountNotFound } from "@/domain/account/AccountNoFound";
 import { IAccountRepository } from "@/domain/account/IAccountRepository";
 import { compare } from "bcryptjs";
-import dotenv from "dotenv"
-
-dotenv.config();
 
 export const key = 'sell';
 
