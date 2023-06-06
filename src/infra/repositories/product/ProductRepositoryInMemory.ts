@@ -32,9 +32,20 @@ class ProductRepositoryInMemory implements IProductRepository {
   public async findById(product_id: string): Promise<Product | null> {
     const product = this.products.find(product => product.id === product_id);
 
-    if (!product) return null
+    if (!product) return null;
 
-    return product
+    return product;
+  }
+
+  public async deleteProduct(product_id: string): Promise<null> {
+    const product = this.products.find(prod => prod.id === product_id);
+
+    if (product) {
+      const index = this.products.indexOf(product);
+      this.products.splice(index, 1);
+    }
+
+    return null;
   }
 }
 

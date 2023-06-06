@@ -6,4 +6,5 @@ export interface IProductRepository {
   list(account_id: string): Promise<Product[]>
   listAll(page: string): Promise<Product[]>
   findById(product_id: string): Promise<Product | null>
+  deleteProduct(product_id: string): Promise<null>
 }

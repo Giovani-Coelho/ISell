@@ -49,6 +49,10 @@ class ProductRepository implements IProductRepository {
 
     return product
   }
+
+  public async deleteProduct(product_id: string): Promise<null> {
+    return null;
+  }
 }
 
 export { ProductRepository }
