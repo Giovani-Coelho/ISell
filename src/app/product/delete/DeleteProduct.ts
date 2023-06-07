@@ -5,7 +5,7 @@ class DeleteProduct {
   constructor(private productRepository: IProductRepository) { }
 
   public async execute(product_id: string): Promise<null> {
-    const product = this.productRepository.findById(product_id);
+    const product = await this.productRepository.findById(product_id);
 
     if (!product) {
       throw new ProductNotFound();

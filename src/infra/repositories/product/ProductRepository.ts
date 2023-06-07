@@ -47,6 +47,8 @@ class ProductRepository implements IProductRepository {
       }
     })
 
+    if (!product) return null;
+
     return product
   }
 
