@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  Esta é uma API de um e-commerce que permite você publicar um produto para outras pessoas comprarem.
+  Esta é uma API projetada por mim, que tem como objetivo ser um e-commerce, permitindo você publicar um produto para outras pessoas comprarem.
 </h3>
 
 ## 🚀 Tecnologias
@@ -21,6 +21,33 @@ Principais tecnologias usadas para desenvolver esta API.
 ## Modelagem de Dados
 
 ![image](modelagem.png)
+
+
+## Requisitos 🗒️
+
+Variáveis ​​ambientais:
+- Crie um arquivo .env na raiz do projeto. 
+- **Determine as seguintes variáveis**:
+
+```sh
+PORT=
+
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+
+DATABASE_URL="postgresql://USER:PASSWORD@CONTAINER_IP:PORT/DATABASE?schema=public"
+```
+
+## Rodando uma Aplicação 🚀
+
+Execute o docker:
+```sh
+docker compose up -d
+```
+Execute as Migrations:
+```sh
+npx prisma migrate deploy
+```
 
 ## Requisitos Funcionais ⚙️
 
