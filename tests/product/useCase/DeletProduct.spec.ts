@@ -37,7 +37,7 @@ describe("Delete Product", () => {
       account_id: account.id as string
     })
 
-    await deleteProduct.execute(product.id);
+    await deleteProduct.execute(account.id as string, product.id);
 
     const isDeleted = await productRepository.findById(product.id);
 
@@ -45,8 +45,14 @@ describe("Delete Product", () => {
   })
 
   it("Should not be able to delete if the product does not exist", async () => {
+    const account = await createAccount.execute({
+      name: "Giovani Coelho",
+      email: "giovanicoelho@hotmail.com",
+      password: "123456"
+    })
+
     expect(async () => {
-      await deleteProduct.execute("111");
+      await deleteProduct.execute(account.id as string, "111");
     }).rejects.toThrow(ProductNotFound);
   })
 })
