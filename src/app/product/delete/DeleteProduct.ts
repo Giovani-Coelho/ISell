@@ -5,7 +5,7 @@ import { ProductNotFound } from "@/domain/product/ProductNotFound";
 class DeleteProduct {
   constructor(private productRepository: IProductRepository) { }
 
-  public async execute(account_id: string, product_id: string): Promise<null> {
+  public async execute(account_id: string, product_id: string): Promise<void> {
     const product = await this.productRepository.findById(product_id);
 
     if (!product) {
@@ -16,9 +16,7 @@ class DeleteProduct {
       throw new ProductIsNotAccount();
     }
 
-    const deleteProduct = this.productRepository.deleteProduct(product_id);
-
-    return deleteProduct;
+    this.productRepository.deleteProduct(product_id);
   }
 }
 

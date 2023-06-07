@@ -53,6 +53,12 @@ class ProductRepository implements IProductRepository {
   }
 
   public async deleteProduct(product_id: string): Promise<null> {
+    await prisma.product.delete({
+      where: {
+        id: product_id
+      }
+    });
+
     return null;
   }
 }
