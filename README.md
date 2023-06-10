@@ -16,6 +16,7 @@ Principais tecnologias usadas para desenvolver esta API.
 - [Prisma](https://www.prisma.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Docker](https://www.docker.com/)
+- [Vitest](https://vitest.dev/)
 - [Zod](https://github.com/colinhacks/zod)
 
 ## Modelagem de Dados
